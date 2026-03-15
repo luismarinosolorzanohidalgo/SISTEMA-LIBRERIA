@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cargando Librería JK...</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at top, #ffcb05, #ff5f6d, #622774);
+      overflow: hidden;
+      position: relative;
+      color: #fff;
+    }
+
+    /* ✨ Partículas doradas flotantes */
+    .particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 215, 0, 0.8);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      50% { transform: translateY(-80px) scale(1.2); opacity: 0.7; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    /* 🔥 Texto principal con brillo */
+    .logo {
+      font-size: 3.5rem;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 
+        0 0 10px #ffda44,
+        0 0 20px #ffda44,
+        0 0 40px #ff9f1a,
+        0 0 60px #ff5f6d;
+      animation: glowPulse 2.5s infinite alternate;
+      z-index: 2;
+    }
+
+    @keyframes glowPulse {
+      from { text-shadow: 0 0 10px #ffda44, 0 0 30px #ff9f1a; }
+      to { text-shadow: 0 0 25px #ffda44, 0 0 70px #ff5f6d; }
+    }
+
+    /* 💫 Loader mejorado */
+    .loader {
+      margin-top: 40px;
+      width: 90px;
+      height: 90px;
+      border: 6px solid rgba(255, 255, 255, 0.2);
+      border-top: 6px solid #ffda44;
+      border-radius: 50%;
+      animation: spin 1.2s linear infinite;
+      z-index: 2;
+      box-shadow: 0 0 25px rgba(255, 218, 68, 0.6);
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* 🌟 Frase inferior */
+    .tagline {
+      margin-top: 25px;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      opacity: 0.9;
+      z-index: 2;
+      animation: fadeIn 2.5s ease;
+      text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ✨ Animación de entrada suave */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="particles"></div>
+  <div class="logo">📚 Librería <span style="color:#ffda44;">JK</span></div>
+  <div class="loader"></div>
+  <div class="tagline">Cargando el panel...</div>
+
+  <script>
+    // 🌟 Generar partículas dinámicamente
+    const particleContainer = document.querySelector('.particles');
+    for (let i = 0; i < 40; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = Math.random() * 100 + '%';
+      particle.style.animationDelay = (Math.random() * 6) + 's';
+      particleContainer.appendChild(particle);
+    }
+
+    // 🚀 Redirección con animación
+    setTimeout(() => {
+      document.body.style.transition = "opacity 1s ease";
+      document.body.style.opacity = 0;
+      setTimeout(() => window.location.href = "dashboard.php", 1000);
+    }, 3500);
+  </script>
+</body>
+</html>
